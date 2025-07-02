@@ -1,0 +1,15 @@
+# Define os serviços (contêineres) que compõem a sua aplicação.
+services:
+  # Define um serviço chamado 'api'. Você pode escolher qualquer nome.
+  api:
+    build: . # Instruções para construir a imagem Docker para este serviço.
+    container_name: my-first-api # Nome do contêiner que será criado.
+    # Mapeia a porta 8000 do seu computador (host) para a porta 8000 do contêiner.
+    # Isso permite que você acesse a API em http://localhost:8000.
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual do seu computador dentro do diretório /app do contêiner.
+    # Isso sincroniza seus arquivos. Qualquer alteração no código local é refletida
+    # imediatamente no contêiner, o que é perfeito para o desenvolvimento com --reload.
+    volumes:
+      - .:/app
